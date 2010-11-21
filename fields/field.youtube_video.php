@@ -203,7 +203,40 @@
 				$author->appendChild(new XMLElement('name', General::sanitize($data['user_name'])));
 				$author->appendChild(new XMLElement('url', $data['user_url']));
 
+				$thumbs = new XMLElement('thumbs');
+
+				$thumb_big = new XMLElement('thumb-big');
+				$thumb_big->setAttributeArray(array(
+					'url' => General::sanitize('http://i.ytimg.com/vi/' . $data['video_id'] . '/0.jpg'),
+					'width' => '320',
+					'height' => '240',
+				));
+				$thumb_small_01 = new XMLElement('thumb-small');
+				$thumb_small_01->setAttributeArray(array(
+					'url' => General::sanitize('http://i.ytimg.com/vi/' . $data['video_id'] . '/1.jpg'),
+					'width' => '120',
+					'height' => '90',
+				));
+				$thumb_small_02 = new XMLElement('thumb-small');
+				$thumb_small_02->setAttributeArray(array(
+					'url' => General::sanitize('http://i.ytimg.com/vi/' . $data['video_id'] . '/2.jpg'),
+					'width' => '120',
+					'height' => '90',
+				));
+				$thumb_small_03 = new XMLElement('thumb-small');
+				$thumb_small_03->setAttributeArray(array(
+					'url' => General::sanitize('http://i.ytimg.com/vi/' . $data['video_id'] . '/3.jpg'),
+					'width' => '120',
+					'height' => '90',
+				));
+
+				$thumbs->appendChild($thumb_big);
+				$thumbs->appendChild($thumb_small_01);
+				$thumbs->appendChild($thumb_small_02);
+				$thumbs->appendChild($thumb_small_03);
+
 				$video->appendChild($author);
+				$video->appendChild($thumbs);
 			}
 			else {
 				$video->appendChild(
